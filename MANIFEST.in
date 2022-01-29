@@ -6,10 +6,5 @@ recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
 include track_changes/*.pyx
 include track_changes/_version.py
-recursive-include track_changes/ *.css
-recursive-include track_changes/ *.jpg
-recursive-include track_changes/ *.png
-recursive-include track_changes/ *.js
-recursive-include track_changes/ *.txt
-recursive-include track_changes/ *.html
+recursive-include track_changes/resources *
 include requirements.txt
