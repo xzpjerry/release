@@ -30,14 +30,21 @@ def render_changelog(
         previous_version (Optional[str], optional): render changelog since which verision. Defaults to None, meaning the one before the latest git tag version.
     """
     if version is None:
-        
-
-    res = j2_env.get_template("resources/changelog_template.md").render(
-        version="0.0.1",
-        prev_version="0.0.0",
-        changes="test",
-        commits=1,
-    )
+        code, version, _ = run_system_command("git describe --tags --abbrev=0")
+        assert code == 0, "Failed to get latest git tag version"
+        version = version.strip()
+    if previous_version is None:
+        code, previous_version, _ = run_system_command(f"git describe --abbrev=0 --tags {version}^")
+        assert code == 0, "Failed to get previous git tag version"
+        previous_version = previous_version.strip()
+    code, changes, _ = run_system_command(f"git log --pretty=format:%s {previous_version}..{version}")
+    assert code == 0, "Failed to get git log"
+    print(j2_env.get_template("resources/changelog_template.md").render(
+        version=version,
+        prev_version=previous_version,
+        changes=changes,
+        commits=len(changes.splitlines()),
+    ))
 
 
 def entrypoint():
