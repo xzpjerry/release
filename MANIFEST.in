@@ -4,12 +4,12 @@ include versioneer.py
 
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
-include release/*.pyx
-include release/_version.py
-recursive-include release/ *.css
-recursive-include release/ *.jpg
-recursive-include release/ *.png
-recursive-include release/ *.js
-recursive-include release/ *.txt
-recursive-include release/ *.html
+include track_changes/*.pyx
+include track_changes/_version.py
+recursive-include track_changes/ *.css
+recursive-include track_changes/ *.jpg
+recursive-include track_changes/ *.png
+recursive-include track_changes/ *.js
+recursive-include track_changes/ *.txt
+recursive-include track_changes/ *.html
 include requirements.txt

@@ -4,7 +4,7 @@ from typing import Optional
 
 import fire
 from jinja2 import Environment, FileSystemLoader
-from release.utils import run_system_command
+from track_changes.utils import run_system_command
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 j2_env = Environment(loader=FileSystemLoader(THIS_DIR), trim_blocks=True)

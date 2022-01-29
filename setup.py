@@ -36,10 +36,10 @@ setup(
     long_description=readme + "\n\n" + history,
     author="xzpjerry",
     author_email="xzpjerry@gmail.com",
-    keywords="release",
+    keywords="track_changes",
     url="http://zhipengx.com/",
     include_package_data=True,
-    packages=find_packages(include=["release", "release.*"]),
+    packages=find_packages(include=["track_changes", "track_changes.*"]),
     install_requires=reqrs,
     python_requires=">=3.6",
     classifiers=[
@@ -52,5 +52,5 @@ setup(
         "Environment :: Console",
     ],
     zip_safe=False,
-    entry_points={"console_scripts": ["release=release:entrypoint"]},
+    entry_points={"console_scripts": ["track_changes=track_changes:entrypoint"]},
 )
