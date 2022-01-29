@@ -52,5 +52,5 @@ setup(
         "Environment :: Console",
     ],
     zip_safe=False,
-    entry_points={"console_scripts": ["release=release:cli"]},
+    entry_points={"console_scripts": ["release=release:entrypoint"]},
 )
