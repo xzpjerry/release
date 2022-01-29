@@ -1,0 +1,15 @@
+include README.md
+include HISTORY.md
+include versioneer.py
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+include release/*.pyx
+include release/_version.py
+recursive-include release/ *.css
+recursive-include release/ *.jpg
+recursive-include release/ *.png
+recursive-include release/ *.js
+recursive-include release/ *.txt
+recursive-include release/ *.html
+include requirements.txt

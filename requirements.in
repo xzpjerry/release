@@ -1,0 +1,5 @@
+-c fix-requirements.txt
+
+pyyaml
+jinja2
+fire
