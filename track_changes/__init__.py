@@ -1,5 +1,4 @@
 import os
-from contextlib import contextmanager
 from typing import Optional
 
 import fire
@@ -10,19 +9,9 @@ THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 j2_env = Environment(loader=FileSystemLoader(THIS_DIR), trim_blocks=True)
 
 
-@contextmanager
-def cwd(path):
-    oldpwd = os.getcwd()
-    os.chdir(path)
-    try:
-        yield
-    finally:
-        os.chdir(oldpwd)
-
-
 def render_changelog(
     version: Optional[str] = None, previous_version: Optional[str] = None
-):
+) -> None:
     """Render Changelog from template
 
     Args:
@@ -34,19 +23,25 @@ def render_changelog(
         assert code == 0, "Failed to get latest git tag version"
         version = version.strip()
     if previous_version is None:
-        code, previous_version, _ = run_system_command(f"git describe --abbrev=0 --tags {version}^")
+        code, previous_version, _ = run_system_command(
+            f"git describe --abbrev=0 --tags {version}^"
+        )
         assert code == 0, "Failed to get previous git tag version"
         previous_version = previous_version.strip()
-    code, changes, _ = run_system_command(f"git log --pretty=format:%s {previous_version}..{version}")
+    code, changes, _ = run_system_command(
+        f"git log --pretty=format:%s {previous_version}..{version}"
+    )
     assert code == 0, "Failed to get git log"
     changes = changes.splitlines()
-    print(j2_env.get_template("resources/changelog_template.md").render(
-        version=version,
-        prev_version=previous_version,
-        changes=changes,
-        commits=len(changes),
-    ))
+    print(
+        j2_env.get_template("resources/changelog_template.md").render(
+            version=version,
+            prev_version=previous_version,
+            changes=changes,
+            commits=len(changes),
+        )
+    )
 
 
-def entrypoint():
+def entrypoint() -> None:
     fire.Fire(render_changelog)
