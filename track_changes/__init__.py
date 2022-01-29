@@ -39,11 +39,12 @@ def render_changelog(
         previous_version = previous_version.strip()
     code, changes, _ = run_system_command(f"git log --pretty=format:%s {previous_version}..{version}")
     assert code == 0, "Failed to get git log"
+    changes = changes.splitlines()
     print(j2_env.get_template("resources/changelog_template.md").render(
         version=version,
         prev_version=previous_version,
         changes=changes,
-        commits=len(changes.splitlines()),
+        commits=len(changes),
     ))
 
 
