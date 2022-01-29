@@ -1,8 +1,10 @@
 # 🎁 Release notes (0.4)
 
 ## Changes
-ref: renamed 
-ref: updated doc; changelog 
+```
+ref: renamed
+ref: updated doc; changelog
+```
 
 ## Metadata
 ```

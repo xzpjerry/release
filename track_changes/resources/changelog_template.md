@@ -1,9 +1,11 @@
 # 🎁 Release notes ({{ version }})
 
 ## Changes
+```
 {% for change in changes %}
-{{ change }} 
+{{ change }}
 {% endfor %}
+```
 
 ## Metadata
 ```
