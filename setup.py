@@ -34,6 +34,7 @@ setup(
     cmdclass=versioneer.get_cmdclass(),
     description="Project Short Description",
     long_description=readme + "\n\n" + history,
+    long_description_content_type='text/markdown',
     author="xzpjerry",
     author_email="xzpjerry@gmail.com",
     keywords="track_changes",
