@@ -56,5 +56,3 @@ def run_system_command(
         out = p.communicate()[0].decode("utf-8")
         is_timeout_reached = True
     return p.returncode, out, is_timeout_reached
-
-print(run_system_command("git tag"))
