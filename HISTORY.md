@@ -1,14 +1,16 @@
-# 🎁 Release notes (0.4)
+# 🎁 Release notes (0.5)
 
 ## Changes
 ```
-ref: renamed
-ref: updated doc; changelog
+fix: format
+fix: github somehow ignored the newline
+ref: updated changes log
+fix: fixed errors on macos
 ```
 
 ## Metadata
 ```
-This version -------- 0.4
-Previous version ---- 0.3
-Total commits ------- 2
+This version -------- 0.5
+Previous version ---- 0.4
+Total commits ------- 4
 ```
