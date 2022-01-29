@@ -30,6 +30,9 @@ def run_system_command(
         elif sys.platform.startswith("win32"):
             subprocess.Popen(["TASKKILL", "/F", "/PID", str(ParentPid), "/T"])
 
+    if sys.platform.startswith("darwin"):
+        shell = True
+    
     # - in windows we never need to split the command, but in cygwin and linux we need to split if shell=False (default), shlex will split the command for us
     if shell == False and (
         sys.platform.startswith("cygwin") or sys.platform.startswith("linux")
