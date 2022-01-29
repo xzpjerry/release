@@ -10,7 +10,9 @@ j2_env = Environment(loader=FileSystemLoader(THIS_DIR), trim_blocks=True)
 
 
 def render_changelog(
-    version: Optional[str] = None, previous_version: Optional[str] = None
+    version: Optional[str] = None,
+    previous_version: Optional[str] = None,
+    out: Optional[str] = None,
 ) -> None:
     """Render Changelog from template
 
@@ -33,14 +35,18 @@ def render_changelog(
     )
     assert code == 0, "Failed to get git log"
     changes = changes.splitlines()
-    print(
-        j2_env.get_template("resources/changelog_template.md").render(
-            version=version,
-            prev_version=previous_version,
-            changes=changes,
-            commits=len(changes),
-        )
+    res = j2_env.get_template("resources/changelog_template.md").render(
+        version=version,
+        prev_version=previous_version,
+        changes=changes,
+        commits=len(changes),
     )
+
+    if out is None:
+        print(res)
+    else:
+        with open(out, "w", encoding="utf-8") as f:
+            f.write(res)
 
 
 def entrypoint() -> None:
