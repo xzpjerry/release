@@ -53,7 +53,7 @@ setup(
     ],
     zip_safe=False,
     entry_points={"console_scripts": [
-        "track_changes=track_changes:entrypoint"
+        "track_changes=track_changes:entrypoint",
         "track-changes=track_changes:entrypoint"
     ]},
 )
