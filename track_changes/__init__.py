@@ -25,7 +25,7 @@ def render_changelog(
     Args:
         version (Optional[str], optional): render changelog for which version. Defaults to None, meaning the latest git tag veresion.
         previous_version (Optional[str], optional): render changelog since which verision. Defaults to None, meaning the one before the latest git tag version.
-        out (Optional[str]): Export to a file (utf-8)
+        out (Optional[str]): the output destination file location. Defaults to None, meaning the stdout.
         template (Optional[str]): output template. Defaults to package's changelog_template.md
         regexps (List[str]): Regular for filtering git records. if send None will grabbing all records.
     """
