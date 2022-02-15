@@ -22,12 +22,11 @@ try:
 except Exception:
     reqrs = [str(ir.requirement) for ir in install_reqs]
 
-with open("README.md") as f:
+with open("README.md", encoding="utf8") as f:
     readme = f.read()
 
-with open("HISTORY.md") as f:
+with open("HISTORY.md", encoding="utf8") as f:
     history = f.read()
-
 
 setup(
     version=versioneer.get_version(),
@@ -38,7 +37,7 @@ setup(
     author="xzpjerry",
     author_email="xzpjerry@gmail.com",
     keywords="track_changes",
-    url="http://zhipengx.com/",
+    url="https://github.com/xzpjerry/tracks_changes",
     include_package_data=True,
     packages=find_packages(include=["track_changes", "track_changes.*"]),
     install_requires=reqrs,
@@ -53,5 +52,8 @@ setup(
         "Environment :: Console",
     ],
     zip_safe=False,
-    entry_points={"console_scripts": ["track_changes=track_changes:entrypoint"]},
+    entry_points={"console_scripts": [
+        "track_changes=track_changes:entrypoint",
+        "track-changes=track_changes:entrypoint"
+    ]},
 )

@@ -32,9 +32,11 @@ def run_system_command(
 
     if sys.platform.startswith("darwin"):
         shell = True
-    
-    # - in windows we never need to split the command, but in cygwin and linux we need to split if shell=False (default), shlex will split the command for us
-    if shell == False and (
+
+    # in windows we never need to split the command
+    # but in cygwin and linux we need to split if shell=False
+    # default) shlex will split the command for us
+    if shell is False and (
         sys.platform.startswith("cygwin") or sys.platform.startswith("linux")
     ):
         command = shlex.split(command)
